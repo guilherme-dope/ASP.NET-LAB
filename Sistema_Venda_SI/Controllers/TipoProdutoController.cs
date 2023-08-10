@@ -5,6 +5,13 @@ namespace Sistema_Venda_SI.Controllers
 {
     public class TipoProdutoController : Controller
     {
+        private readonly DBSISTEMASContext _context;
+
+        public TipoProdutoController(DBSISTEMASContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -20,6 +27,11 @@ namespace Sistema_Venda_SI.Controllers
 
         public IActionResult Create(TipoProduto tipoProduto) 
         {
+            if (ModelState.IsValid)
+            {
+                _context.Entry(tipoProduto).State = Microsoft.EntityFrameworkCore.EntityState.Added;
+                _context.SaveChanges();
+            }
             return View(tipoProduto);
         }
     }
