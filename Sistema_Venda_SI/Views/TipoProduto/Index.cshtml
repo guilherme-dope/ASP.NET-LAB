@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Sistema_Venda_SI.Model.Models.TipoProduto>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TipDescricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipDestivado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipDescricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipDestivado)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TipCodigo">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TipCodigo">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TipCodigo">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
